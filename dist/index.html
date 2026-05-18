@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eGain New Article Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap"
+      rel="stylesheet" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/tko-modal.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- js files -->
+    <script src="./src/tko-prt-data-1.min.js"></script>
+    <script src="./src/tko-prt-data-2.min.js"></script>
+    <script src="./src/tko-prt-data-3.min.js"></script>
+    <script src="./src/tko-prt-data-4.min.js"></script>
+    <script src="./src/tko-prt-data-5.min.js"></script>
+    <script src="./src/tko-prt-data-6.min.js"></script>
+    <script src="./src/tko-prt-data-7.min.js"></script>
+    <script src="./src/tko-main.min.js" defer></script>
+    <script src="./src/script.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-left">
+        <!-- <div class="logo-mark">
+        <svg viewBox="0 0 16 16"><path d="M2 3h12v2H2zm0 4h8v2H2zm0 4h10v2H2z"/></svg>
+      </div> -->
+        <span class="app-title">Vertiv</span>
+        <span class="app-subtitle">eGain New Article Preview</span>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+          <svg class="icon-sun" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M8 11a3 3 0 110-6 3 3 0 010 6zm0 1a4 4 0 100-8 4 4 0 000 8zM8 0a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 0zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 13zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM3 8a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2A.5.5 0 013 8zm10.657-5.657a.5.5 0 010 .707l-1.414 1.415a.5.5 0 11-.707-.707l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L3.05 13.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM4.464 4.465a.5.5 0 01-.707 0L2.343 3.05a.5.5 0 11.707-.707l1.414 1.414a.5.5 0 010 .707z" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M6 .278a.768.768 0 01.08.858 7.208 7.208 0 00-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 01.81.316.733.733 0 01-.031.893A8.349 8.349 0 018.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 016 .278z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <!-- Left: editor -->
+      <div class="left-panel" id="leftPanel">
+        <div class="panel-header">
+          <div class="panel-label">
+            <svg class="panel-label-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M4.5 2h-2A1.5 1.5 0 001 3.5v9A1.5 1.5 0 002.5 14h11a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0013.5 2h-2V1h-1v1h-5V1h-1v1zM2 4.5V3.5a.5.5 0 01.5-.5h11a.5.5 0 01.5.5v1H2z" />
+            </svg>
+            HTML Source
+          </div>
+          <div class="panel-actions">
+            <button class="btn-icon" id="clearBtn" title="Clear editor">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                  d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z" />
+                <path
+                  d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 010-2h3.5a1 1 0 011-1h3a1 1 0 011 1H14a1 1 0 011 1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118z" />
+              </svg>
+            </button>
+            <button class="btn-icon" id="copyBtn" title="Copy HTML">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                  d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z" />
+                <path
+                  d="M9.5 1h-3a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5zm-3-1A1.5 1.5 0 005 1.5v1A1.5 1.5 0 006.5 4h3A1.5 1.5 0 0011 2.5v-1A1.5 1.5 0 009.5 0h-3z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="editor-wrap">
+          <div class="editor-ide">
+            <div class="line-numbers" id="lineNumbers"></div>
+            <textarea id="htmlInput" spellcheck="false" placeholder="<!-- Paste your eGain article HTML here -->"></textarea>
+          </div>
+        </div>
+
+        <div class="editor-footer">
+          <span class="char-count" id="charCount">0 chars</span>
+
+          <div class="editor-footer-left">
+            <div class="shortcut-hint">
+              <kbd>Ctrl</kbd>
+              <span>+</span>
+              <kbd>↵</kbd>
+            </div>
+            <button class="btn-preview" id="previewBtn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" />
+              </svg>
+              Render Preview
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resize-handle" id="resizeHandle"></div>
+
+      <!-- Right: preview -->
+      <div class="right-panel">
+        <div class="preview-toolbar">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+            </div>
+            <div class="url-bar">https://knowledge.connectedce.vertiv.com</div>
+            <div class="status-badge" id="statusBadge">
+              <div class="status-dot"></div>
+              <span id="statusText">No preview</span>
+            </div>
+          </div>
+          <!-- <div class="preview-zoom">100%</div> -->
+        </div>
+        <div class="preview-card-chrome">
+          <span class="preview-card-title" id="previewCardTitle">Article Preview</span>
+        </div>
+
+        <div class="preview-scroll">
+          <div class="preview-card">
+            <div class="custom-article-content" id="previewContent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+      <div class="toast-dot"></div>
+      <span id="toastMsg">Done</span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "build:prt:1": "npx terser src\\data\\prt-data-1.js -c -m -o dist\\src\\tko-prt-data-1.min.js",
+    "build:prt:2": "npx terser src\\data\\prt-data-2.js -c -m -o dist\\src\\tko-prt-data-2.min.js",
+    "build:prt:3": "npx terser src\\data\\prt-data-3.js -c -m -o dist\\src\\tko-prt-data-3.min.js",
+    "build:prt:4": "npx terser src\\data\\prt-data-4.js -c -m -o dist\\src\\tko-prt-data-4.min.js",
+    "build:prt:5": "npx terser src\\data\\prt-data-5.js -c -m -o dist\\src\\tko-prt-data-5.min.js",
+    "build:prt:6": "npx terser src\\data\\prt-data-6.js -c -m -o dist\\src\\tko-prt-data-6.min.js",
+    "build:prt:7": "npx terser src\\data\\prt-data-7.js -c -m -o dist\\src\\tko-prt-data-7.min.js",
+    "build:prt": "npm run build:prt:1 && npm run build:prt:2 && npm run build:prt:3 && npm run build:prt:4 && npm run build:prt:5 && npm run build:prt:6 && npm run build:prt:7",
+    "build:main": "type src\\data\\gxt5-ups-data.js src\\data\\hpl-fas.js src\\data\\z23-hpl-batt-settings.js src\\data\\z23-sam-batt-settings.js src\\data\\z25-hpl-battery-settings.js src\\data\\z25-sam-battery-settings.js src\\data\\z27-hpl-battery-settings.js src\\data\\z27-sam-battery-settings.js src\\data\\z27-vec-battery-settings.js src\\tko-main.js src\\tko-parts-research-tool.js | terser -c -m -o dist\\src\\tko-main.min.js",
+    "build:css": "cleancss -o dist\\css\\tko-main.min.css css\\tko-main.css css\\tko-part-research-tool.css",
+    "build:dist": "npm run build:main && npm run build:css",
+    "build:all": "npm run build:prt && npm run build:main && npm run build:css"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.46.1"
+  }
+}
