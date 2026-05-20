@@ -2572,6 +2572,32 @@ function g25_loadForm() {
     }
   });
 }
+
+function g25_resetLoadFormFields() {
+  const host = document.querySelector(".custom-article-content");
+  if (!host || !host.shadowRoot) return;
+
+  const root = host.shadowRoot;
+
+  const form = root.querySelector('form[name="part-number"]');
+  if (!form) return;
+
+  form.querySelectorAll("select").forEach((select) => {
+    select.selectedIndex = 0;
+  });
+
+  form.querySelectorAll("input[readonly]").forEach((input) => {
+    if (input.name !== "n-wire") {
+      input.value = "";
+    }
+  });
+
+  const lengthInput = form.querySelector('input[name="s-leng"]');
+
+  if (lengthInput) {
+    lengthInput.value = "";
+  }
+}
 // #endregion g25 =========================================================================================================
 
 // #region g26 =========================================================================================================
