@@ -1892,6 +1892,7 @@ function createFASHolder(container, title, description, content, root) {
       ${formatHTML(content)}
     `;
     container.appendChild(contentEl);
+    fStyleContentModal(root);
   }
 }
 
