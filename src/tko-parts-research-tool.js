@@ -8,7 +8,7 @@ if (Array.isArray(partsResearchToolData_5) && partsResearchToolData_5[0]) {
   };
 }
 
-const partsResearchToolData = [
+let partsResearchToolData = [
   ...(Array.isArray(partsResearchToolData_1) ? partsResearchToolData_1 : []),
   ...(Array.isArray(partsResearchToolData_2) ? partsResearchToolData_2 : []),
   ...(Array.isArray(partsResearchToolData_3) ? partsResearchToolData_3 : []),
@@ -22,13 +22,20 @@ function fLoadPartResearchTool() {
   if (!host || !host.shadowRoot) return;
   const root = host.shadowRoot;
 
+  const prtFilter = root.querySelector("#custom-article-div").dataset.prtId;
+
   fStyleFilterableTable(root);
   fStyleSortableTable(root);
   fStyleDocumentTips(root);
   fStyleContentModeless(root);
   fStyleContentModal(root);
   fStyleContentToggle(root);
-  fSelectorProduct_Create();
+
+  if (prtFilter) {
+    fSelectorSegment_Create(prtFilter);
+  } else {
+    fSelectorProduct_Create();
+  }
 }
 
 function addEventOncePrt(el, event, handler) {
