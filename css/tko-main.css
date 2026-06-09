@@ -1078,6 +1078,12 @@ table.nb th {
 }
 /* #endregion p65 */
 
+/* #region p68 */
+.errorcodehighlight td {
+  background-color: #ffd700;
+}
+/* #endregion p68 */
+
 /* #region p69 */
 #p69-paramset-system-container {
   position: absolute;
