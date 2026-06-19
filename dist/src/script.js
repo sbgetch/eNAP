@@ -225,7 +225,7 @@ document.getElementById("previewBtn").addEventListener("click", async () => {
   // previewCardTitle.textContent = titleEl ? titleEl.textContent.trim().slice(0, 60) : "Article Preview";
 
   // Specify your CSS file path here
-  const cssFile = ["./css/tko-main.css", "./css/tko-part-research-tool.css"];
+  const cssFile = ["./css/tko-main.min.css"];
 
   await renderArticle(html, cssFile);
 
