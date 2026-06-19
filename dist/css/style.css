@@ -62,7 +62,9 @@ body {
   width: 15px;
   height: 15px;
   position: absolute;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 
 .theme-toggle {
@@ -259,6 +261,11 @@ header {
   letter-spacing: 0.08em;
 }
 
+.panel-label-text, 
+.pdf-label {
+  padding-top: 5px;
+}
+
 .panel-label-icon {
   width: 16px;
   height: 16px;
@@ -434,12 +441,16 @@ kbd {
   cursor: pointer;
   letter-spacing: 0.02em;
   transition: all 0.15s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 0 var(--accent-glow);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 0 0 0 var(--accent-glow);
 }
 
 .btn-preview:hover {
   background: #6ba0f8;
-  box-shadow: 0 2px 8px rgba(79, 142, 247, 0.4), 0 0 0 0 var(--accent-glow);
+  box-shadow:
+    0 2px 8px rgba(79, 142, 247, 0.4),
+    0 0 0 0 var(--accent-glow);
   transform: translateY(-1px);
 }
 
@@ -549,7 +560,9 @@ kbd {
   margin: 0 auto;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.12),
+    0 1px 4px rgba(0, 0, 0, 0.08);
   overflow-x: auto;
 }
 
@@ -592,6 +605,67 @@ kbd {
 
 #modal-wrapper {
   color: #000000;
+}
+
+/* PDF download button */
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.btn-pdf:hover {
+  background: #a93226;
+}
+.btn-pdf:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-pdf svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* Spinner shown during PDF generation */
+.btn-pdf .pdf-spinner {
+  display: none;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: pdf-spin 0.7s linear infinite;
+}
+.btn-pdf.generating .pdf-spinner {
+  display: block;
+}
+.btn-pdf.generating .pdf-icon {
+  display: none;
+}
+@keyframes pdf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Push button to the right inside the card chrome bar */
+.preview-card-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Toast */
@@ -649,7 +723,10 @@ kbd {
   background: var(--surface2);
   border-radius: 999px;
   border: 1.5px solid var(--text-muted);
-  transition: background 0.15s, transform 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    transform 0.15s,
+    border-color 0.15s;
   pointer-events: none;
 }
 

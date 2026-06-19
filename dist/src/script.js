@@ -104,7 +104,7 @@ async function injectExternalCSS(hrefs) {
       } catch (err) {
         console.error(`injectExternalCSS: failed to load "${href}"`, err);
       }
-    })
+    }),
   );
 }
 
@@ -225,7 +225,7 @@ document.getElementById("previewBtn").addEventListener("click", async () => {
   // previewCardTitle.textContent = titleEl ? titleEl.textContent.trim().slice(0, 60) : "Article Preview";
 
   // Specify your CSS file path here
-  const cssFile = ["./css/tko-main.min.css"];
+  const cssFile = ["./css/tko-main.css", "./css/tko-part-research-tool.css"];
 
   await renderArticle(html, cssFile);
 
@@ -370,7 +370,7 @@ resizeHandle.addEventListener(
     resizeHandle.classList.add("dragging");
     document.body.style.userSelect = "none";
   },
-  { passive: true }
+  { passive: true },
 );
 
 // ── Drag move ──
@@ -402,7 +402,7 @@ document.addEventListener(
       leftPanel.style.width = newWidth + "px";
     }
   },
-  { passive: true }
+  { passive: true },
 );
 
 // ── Drag end ──
@@ -428,3 +428,100 @@ const themeToggle = document.getElementById("themeToggle");
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
 });
+
+(function () {
+  const pdfBtn = document.getElementById("pdfBtn");
+  const shadowHost = document.querySelector(".custom-article-content");
+
+  // Enable button once real content is in the shadow root
+  function observeShadowRoot() {
+    const sr = shadowHost.shadowRoot;
+    if (!sr) return;
+
+    const observer = new MutationObserver(() => {
+      const container = sr.querySelector("#shadow-container");
+      const hasContent = container && !container.querySelector(".empty-state") && container.textContent.trim().length > 0;
+      pdfBtn.disabled = !hasContent;
+    });
+    observer.observe(sr, { childList: true, subtree: true });
+  }
+  setTimeout(observeShadowRoot, 0);
+
+  pdfBtn.addEventListener("click", async () => {
+    if (pdfBtn.disabled) return;
+
+    const sr = shadowHost.shadowRoot;
+    const container = sr && sr.querySelector("#shadow-container");
+    if (!container) return;
+
+    pdfBtn.classList.add("generating");
+    pdfBtn.disabled = true;
+
+    try {
+      // Collect <style> tags already injected into the shadow root.
+      // These include the raw text of tko-main.css, tko-part-research-tool.css, etc.
+      // because injectExternalCSS() fetches them and writes them as <style data-href="..."> nodes.
+      const styles = [...sr.querySelectorAll("style")].map((s) => s.textContent).join("\n");
+
+      // Also pull any Google Fonts <link> from the main document head so typography matches
+      const fontLinks = [...document.querySelectorAll('link[rel="stylesheet"]')].map((l) => `<link rel="stylesheet" href="${l.href}">`).join("\n");
+
+      const printWin = window.open("", "_blank", "width=900,height=700");
+      printWin.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Article Preview</title>
+  ${fontLinks}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Calibre", "DM Sans", Arial, sans-serif;
+      font-size: 15px;
+      color: #111;
+      background: #fff;
+      padding: 32px 40px;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; }
+    @media print {
+      body { padding: 0; }
+      @page { margin: 15mm 18mm; }
+    }
+  </style>
+  <style>${styles}</style>
+</head>
+<body>
+${container.innerHTML}
+</body>
+</html>`);
+
+      printWin.document.close();
+
+      // Wait for fonts + images to load before printing
+      printWin.onload = () => {
+        setTimeout(() => {
+          printWin.focus();
+          printWin.print();
+          printWin.close();
+        }, 600);
+      };
+
+      // Fallback: if onload already fired (some browsers), trigger after a delay
+      setTimeout(() => {
+        try {
+          if (!printWin.closed) {
+            printWin.focus();
+            printWin.print();
+            printWin.close();
+          }
+        } catch (e) {
+          /* already closed or printed */
+        }
+      }, 2000);
+    } finally {
+      pdfBtn.classList.remove("generating");
+      pdfBtn.disabled = false;
+    }
+  });
+})();
