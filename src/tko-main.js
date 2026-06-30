@@ -334,7 +334,7 @@ function fStyleSortableTable(root) {
 
             sValue = utc;
           } else {
-            sValue = cell.textContent;
+            sValue = cell.textContent.trim();
           }
 
           // EXACT old jQuery behavior
