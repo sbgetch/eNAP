@@ -283,6 +283,12 @@ dl.product_info dd {
 dl.product-info dd {
   margin-left: 300px;
 }
+dl.tech-tip dd {
+    margin-left: 120px;
+}
+dl.tech-tip dt {
+    width: 100px;
+}
 div {
   /* Blocks & Paragraphs */
   margin-top: 16px;
